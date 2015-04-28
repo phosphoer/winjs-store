@@ -1,0 +1,25 @@
+{
+  "name": "winjs-store",
+  "version": "1.0.0",
+  "description": "A sample WinJS app",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phosphoer/winjs-store.git"
+  },
+  "author": "WinJS Team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phosphoer/winjs-store/issues"
+  },
+  "homepage": "https://github.com/phosphoer/winjs-store",
+  "devDependencies": {
+    "browser-sync": "^2.6.5",
+    "gulp": "^3.8.11",
+    "gulp-typescript": "^2.6.0",
+    "require-dir": "^0.3.0"
+  }
+}
