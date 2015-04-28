@@ -50,6 +50,6 @@
 
 window.addEventListener("DOMContentLoaded",() => {
     WinJS.UI.processAll().then(() => {
-
+        WinJS.Navigation.navigate(Application.navigator.home);
     });
 });

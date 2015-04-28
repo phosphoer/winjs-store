@@ -1,0 +1,5 @@
+#root {
+	/* Make room for the AppBar */
+	padding-top: 58px;
+	height: calc(100% - 58px);
+}

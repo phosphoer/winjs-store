@@ -4,6 +4,9 @@
     <script src='lib/winjs/js/winjs.js'></script>
     <link rel='stylesheet' type='text/css' href='lib/winjs/css/ui-light.css' />
 
+    <script src="lib/navigator.js"></script>
+
+    <link rel='stylesheet' type='text/css' href='index.css' />
     <script src="index.js"></script>
 </head>
 
@@ -11,5 +14,10 @@
     <div data-win-control="WinJS.UI.AppBar" data-win-options="{ placement: 'top' }">
         <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ label:'Profile', icon:'settings', tooltip:'Settings',section:'primary' }"></button>
     </div>
+    <div id="root">
+	    <div data-win-control="Application.PageControlNavigator" data-win-options="{
+	    	home: '/pages/search/search.html'
+		}">
+	</div>
 </body>
 </html>
