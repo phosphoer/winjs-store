@@ -1,6 +1,8 @@
 interface Window {
     Store: {
-        catalog: ICatalogItem[]
+        catalog: ICatalogItem[];
+        categories: string[];
+        companies: string[];
     };
 }
 

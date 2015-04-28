@@ -42,7 +42,9 @@
     }
 
     window.Store = {
-        catalog: catalog
+        catalog: catalog,
+        categories: categories,
+        companies: companies
     };
 })();
 
