@@ -3,7 +3,7 @@ var config = require('../config');
 var browserSync  = require('browser-sync');
 var ts = require('gulp-typescript');
 
-var tasks = ['css', 'js', 'markup'];
+var tasks = ['css', 'js', 'markup', 'lib'];
 
 tasks.forEach(function(task) {
   gulp.task(task, function() {

@@ -16,6 +16,10 @@ module.exports = {
     src: src + "/**/*.html",
     dest: dest
   },
+  lib: {
+    src: "./lib/**/*",
+    dest: dest + '/lib'
+  },
   ts: {
     src: src + "/**/*.ts",
     dest: dest
