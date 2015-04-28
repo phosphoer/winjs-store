@@ -5,7 +5,7 @@ var ts = require('gulp-typescript');
  
 var tsProject = ts.createProject({
       declarationFiles: true,
-      noExternalResolve: true
+      noExternalResolve: false
 });
 
 gulp.task('ts', function() {

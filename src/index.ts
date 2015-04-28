@@ -1,4 +1,6 @@
-﻿interface Window {
+﻿///<reference path="../typings/winjs.d.ts" />
+
+interface Window {
     Store: {
         catalog: ICatalogItem[]
     };
@@ -56,5 +58,13 @@ interface ICatalogItem {
         });
     }
 
-    window.Store.catalog = catalog;
+    window.Store = {
+        catalog: catalog
+    };
 })();
+
+window.addEventListener("DOMContentLoaded",() => {
+    WinJS.UI.processAll().then(() => {
+
+    });
+});
