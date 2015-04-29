@@ -25,26 +25,48 @@ module Store {
         console.log("settings");
     }
 
-    // Static Data Class 
+    // Static Data Class
     export class Data {
         private static _sortingFunc: (left: ICatalogItem, right: ICatalogItem) => number = (a, b) => 0;
 
         static filteredData = new WinJS.Binding.List<ICatalogItem>();
 
-        static filterData = (query?: string) => {
-            var filteredCatalog = Store.catalog.slice(0);
+        static filterFunction = (item: ICatalogItem):boolean => {
+            return Data.categoryFilterFunction(item) &&
+                   Data.queryFilterFunction(item);
+        }
 
-            if (query) {
-                var filteredCatalog = Store.catalog.filter((item: ICatalogItem) => {
-                    return item.name.indexOf(query) >= 0 ||
-                        item.category.indexOf(query) >= 0 ||
-                        item.company.indexOf(query) >= 0 ||
-                        item.desc.indexOf(query) >= 0;
-                })
+        static queryFilterFunction = (item: ICatalogItem): boolean => {
+            if (Data.currentQuery) {
+                return item.name.indexOf(Data.currentQuery) >= 0 ||
+                    item.category.indexOf(Data.currentQuery) >= 0 ||
+                    item.company.indexOf(Data.currentQuery) >= 0 ||
+                    item.desc.indexOf(Data.currentQuery) >= 0;
             }
 
-            Data.filteredData = new WinJS.Binding.List<ICatalogItem>(filteredCatalog);
+            return true;
         }
+
+        static categoryFilterFunction = (item: ICatalogItem): boolean => {
+          if (Data.numCategoriesChecked === 0)
+            return true;
+
+          return Data.currentCategories[item.category];
+        }
+
+        private static _currentQuery = "";
+        static get currentQuery() {
+            return Data._currentQuery;
+        }
+        static set currentQuery(value: string) {
+            if (value && value !== Data._currentQuery) {
+                Data._currentQuery = value;
+                Data.refreshData();
+            }
+        }
+
+        static numCategoriesChecked = 0;
+        static currentCategories = {};
 
         static get sortingFunc() {
             return Data._sortingFunc;
@@ -55,8 +77,10 @@ module Store {
         }
 
         static refreshData() {
+            var tempCatalog:ICatalogItem[] = catalog.filter(Data.filterFunction);
+
             Data.filteredData.length = 0;
-            Data.filteredData.splice.apply(Data.filteredData, (<any>[0, 0]).concat(catalog.sort(Data.sortingFunc)));
+            Data.filteredData.splice.apply(Data.filteredData, (<any>[0, 0]).concat(tempCatalog.sort(Data.sortingFunc)));
         }
     }
 
@@ -122,11 +146,11 @@ module Store {
     Store.catalog = catalog;
     Store.categories = new WinJS.Binding.List(categories);
     Store.companies = new WinJS.Binding.List(companies);
-    Store.Data.refreshData();
 
     window.addEventListener("DOMContentLoaded", () => {
         WinJS.UI.processAll().then(() => {
             WinJS.Navigation.navigate(Application.navigator.home);
+            Store.Data.refreshData();
         });
     });
 })();

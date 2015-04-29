@@ -5,5 +5,9 @@
 			"path": "../../",
       "folder_exclude_patterns": ["node_modules", "build", "lib"]
 		}
-	]
+	],
+  "options":
+  {
+    "tab_size": 4
+  }
 }
