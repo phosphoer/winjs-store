@@ -7,7 +7,14 @@ module Store {
     export var companies: WinJS.Binding.List<string>;
 
     export function showCart() {
-        console.log("cart");
+        var contentDialog = document.querySelector(".win-contentdialog").winControl;
+        contentDialog.show().then((e) => {
+          if (e.result === 'primary') {
+            alert('checkout');
+          } else {
+            alert('cancelled');
+          }
+          });
     }
 
     export function showProfile() {
@@ -18,6 +25,7 @@ module Store {
         console.log("settings");
     }
 
+     // Static Data Class 
     export class Data {
         private static _sortingFunc: (left: ICatalogItem, right: ICatalogItem) => number = (a, b) => 0;
 
@@ -92,7 +100,7 @@ module Store {
             price: +(1 + Math.random() * 200).toFixed(2),
             ratingAvg: +(Math.random() * 5).toFixed(2),
             ratingCount: (popular ? (100 + Math.random() * 10000) : (Math.random() * 50)) | 0,
-            reviews: reviews
+            reviews: reviews,
         });
     }
 
