@@ -1,5 +1,4 @@
-﻿///<reference path="../typings/winjs.d.ts" />
-///<reference path="../typings/winjs-store.d.ts" />
+﻿///<reference path="../typings/winjs-store.d.ts" />
 
 module Store {
     export var catalog: ICatalogItem[];
@@ -27,6 +26,8 @@ module Store {
 }
 
 (() => {
+    Math.seedrandom("WinJS");
+
     var categories = ["Electronics", "Kitchen", "Books", "Furniture", "Outdoor"];
     var companies = [];
     for (var i = 0; i < 10; i++) {
