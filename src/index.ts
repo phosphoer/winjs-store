@@ -82,6 +82,7 @@ module Store {
 
             Data.filteredData.length = 0;
             Data.filteredData.splice.apply(Data.filteredData, (<any>[0, 0]).concat(tempCatalog.sort(Data.sortingFunc)));
+            Data.filteredData.splice(100, Data.filteredData.length);
         }
     }
 
