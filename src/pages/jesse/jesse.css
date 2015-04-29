@@ -1,0 +1,22 @@
+.resultListTemplate {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 16px;
+	border-bottom: 1px solid #BBBBBB;
+}
+
+.resultListTemplate .resultListTemplateTop {
+	display: flex;
+	justify-content: space-between;
+}
+
+.resultListTemplate .resultListTemplateTop .placeholderImg {
+	width: 128px;
+	height: 128px;
+	background-color: gray;
+}
+
+.resultListTemplate .resultListTemplateBottom {
+	display: flex;
+	justify-content: space-between;
+}
