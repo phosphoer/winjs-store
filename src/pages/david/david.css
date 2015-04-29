@@ -1,0 +1,36 @@
+.pane-section
+{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.pane-title
+{
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.pane-title-icon
+{
+  margin-left: 8px;
+  display: inline-block;
+  font-size: 30px;
+  line-height: 30px;
+  font-family: "Symbols";
+}
+
+.win-splitview-pane-closed .pane-section
+{
+  margin-bottom: 50px;
+}
+
+.win-splitview-pane-closed .pane-title
+{
+  display: none;
+}
+
+.win-splitview-pane-closed .pane-item
+{
+  display: none;
+}
+
