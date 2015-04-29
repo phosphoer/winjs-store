@@ -1,9 +1,8 @@
-interface Window {
-    Store: {
-        catalog: ICatalogItem[];
-        categories: string[];
-        companies: string[];
-    };
+
+declare module Store {
+    catalog: ICatalogItem[];
+    categories: string[];
+    companies: string[];
 }
 
 interface ICatalogItem {
@@ -16,4 +15,10 @@ interface ICatalogItem {
     ratingCount: number;
     reviews: string[];
     price: number;
+}
+
+declare module Application {
+    export var navigator = {
+        home: string
+    }
 }
