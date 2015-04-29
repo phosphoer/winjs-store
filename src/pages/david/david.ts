@@ -4,13 +4,19 @@
 (() => {
     WinJS.UI.Pages.define("/pages/david/david.html", {
         ready: function(element, options) {
+
         },
         unload: function() {
         }
     });
 
-    window['Store'].expandPane = function() {
-        var splitview: WinJS.UI.SplitView = document.querySelector("#splitview").winControl;
-        splitview.openPane();
-    };
+    WinJS.Namespace.define('Application.Pane', {
+      expandPane: function() {
+          var splitview: WinJS.UI.SplitView = document.querySelector("#splitview").winControl;
+          splitview.openPane();
+      },
+      checkboxChanged: function(checkbox) {
+      }
+    });
+
 })();
