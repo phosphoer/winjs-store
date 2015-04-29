@@ -1,4 +1,5 @@
-///<reference path="../../../typings/winjs.d.ts" />
+///<reference path="../../index.ts" />
+///<reference path="../../../typings/winjs-store.d.ts" />
 
 (() => {
     WinJS.UI.Pages.define("/pages/search/search.html", {
@@ -38,11 +39,11 @@
                     break;
 
                 case "ratings":
-                    Store.Data.sortingFunc = (a, b) => a.ratingAvg < b.ratingAvg ? -1 : (a.ratingAvg === b.ratingAvg ? 0 : 1);
+                    Store.Data.sortingFunc = (a, b) => a.ratingAvg < b.ratingAvg ? 1 : (a.ratingAvg === b.ratingAvg ? 0 : -1);
                     break;
 
                 case "ratingsDesc":
-                    Store.Data.sortingFunc = (a, b) => a.ratingAvg < b.ratingAvg ? 1 : (a.ratingAvg === b.ratingAvg ? 0 : -1);
+                    Store.Data.sortingFunc = (a, b) => a.ratingAvg < b.ratingAvg ? -1 : (a.ratingAvg === b.ratingAvg ? 0 : 1);
                     break;
             }
         },

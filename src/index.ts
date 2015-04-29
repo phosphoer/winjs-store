@@ -9,12 +9,12 @@ module Store {
     export function showCart() {
         var contentDialog = document.querySelector(".win-contentdialog").winControl;
         contentDialog.show().then((e) => {
-          if (e.result === 'primary') {
-            alert('checkout');
-          } else {
-            alert('cancelled');
-          }
-          });
+            if (e.result === 'primary') {
+                alert('checkout');
+            } else {
+                alert('cancelled');
+            }
+        });
     }
 
     export function showProfile() {
@@ -25,7 +25,7 @@ module Store {
         console.log("settings");
     }
 
-     // Static Data Class
+    // Static Data Class
     export class Data {
         private static _sortingFunc: (left: ICatalogItem, right: ICatalogItem) => number = (a, b) => 0;
 
@@ -37,14 +37,32 @@ module Store {
         }
 
         static queryFilterFunction = (item: ICatalogItem): boolean => {
+            if (Data.currentQuery) {
+                return item.name.indexOf(Data.currentQuery) >= 0 ||
+                    item.category.indexOf(Data.currentQuery) >= 0 ||
+                    item.company.indexOf(Data.currentQuery) >= 0 ||
+                    item.desc.indexOf(Data.currentQuery) >= 0;
+            }
+
             return true;
         }
 
-        static categoryFilterFunction = (item: ICatalogItem):boolean => {
-            if (window['Application'].Pane.numCategoriesChecked === 0)
-                return true;
+        static categoryFilterFunction = (item: ICatalogItem): boolean => {
+          if (window['Application'].Pane.numCategoriesChecked === 0)
+            return true;
 
-            return window['Application'].Pane.categories[item.category];
+          return window['Application'].Pane.categories[item.category];
+        }
+
+        private static _currentQuery = "";
+        static get currentQuery() {
+            return Data._currentQuery;
+        }
+        static set currentQuery(value: string) {
+            if (value && value !== Data._currentQuery) {
+                Data._currentQuery = value;
+                Data.refreshData();
+            }
         }
 
         static get sortingFunc() {
