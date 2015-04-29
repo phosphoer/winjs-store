@@ -48,10 +48,10 @@ module Store {
         }
 
         static categoryFilterFunction = (item: ICatalogItem): boolean => {
-          if (window['Application'].Pane.numCategoriesChecked === 0)
+          if (Data.numCategoriesChecked === 0)
             return true;
 
-          return window['Application'].Pane.categories[item.category];
+          return Data.currentCategories[item.category];
         }
 
         private static _currentQuery = "";
@@ -64,6 +64,9 @@ module Store {
                 Data.refreshData();
             }
         }
+
+        static numCategoriesChecked = 0;
+        static currentCategories = {};
 
         static get sortingFunc() {
             return Data._sortingFunc;
@@ -143,11 +146,11 @@ module Store {
     Store.catalog = catalog;
     Store.categories = new WinJS.Binding.List(categories);
     Store.companies = new WinJS.Binding.List(companies);
-    Store.Data.refreshData();
 
     window.addEventListener("DOMContentLoaded", () => {
         WinJS.UI.processAll().then(() => {
             WinJS.Navigation.navigate(Application.navigator.home);
+            Store.Data.refreshData();
         });
     });
 })();
