@@ -31,6 +31,10 @@ module Store {
 
         static filteredData = new WinJS.Binding.List<ICatalogItem>();
 
+        static filterFunction = () => {
+
+        }
+
         static get sortingFunc() {
             return Data._sortingFunc;
         }
