@@ -6,24 +6,29 @@
 
     <script src="jesse.js"></script>
     <link rel='stylesheet' type='text/css' href='./jesse.css' />
+
+    <style>
+        .item {
+            border: steelblue dashed 2px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="box">
         <div id="searchBoxId"
              data-win-control="WinJS.UI.SearchBox"
-             data-win-options="{placeholderText: 'Type a city'}">
+             data-win-options="{placeholderText: 'Type product name'}">
         </div>
         <div id="status"></div>
     </div>
 
     <div data-win-control="WinJS.UI.Repeater" data-win-options="{data: Store.Data.filteredData}">
-        <!--<div id="jesserepeater">-->
-        <div>
-            <span data-win-bind="textContent: id"></span>
-            <span data-win-bind="textContent: company"></span>
-            <span data-win-bind="textContent: category"></span>
-            <span data-win-bind="textContent: name"></span>
+        <div class="item">
+            Company:<span data-win-bind="textContent: company"></span><br />
+            Name:<span data-win-bind="textContent: name"></span><br />
+            $:<span data-win-bind="textContent: price"></span><br />
+            Rating:<span data-win-bind="textContent: ratingAvg"></span>(<span data-win-bind="textContent: ratingCount"></span>)<br />
             <a>View Details ></a>
         </div>
     </div>
