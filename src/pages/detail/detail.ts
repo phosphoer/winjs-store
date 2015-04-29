@@ -58,9 +58,6 @@ function merge(a, b) {
       });
     },
     _addToCart: function (eventObject) {
-      var contentDialog = document.querySelector(".win-contentdialog").winControl;
-      contentDialog.show().then((e) => {
-        if (e.result === 'primary') {
           var amountInput = this.element.querySelector(".amountInput");
           var addToCartBtn = this.element.querySelector(".addToCartBtn");
           Store.Cart.addToCart({
@@ -76,12 +73,8 @@ function merge(a, b) {
           amountInput.value = 1;
           amountInput.disabled = false;
           }, 1500);
-          } else {
-            alert('cancelled');
-          }
+          } 
       });
-    }
-  });
 
   WinJS.Namespace.define("Application", {
       MediaPlayer: WinJS.Class.define((element, options) => {

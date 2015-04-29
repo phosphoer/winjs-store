@@ -7,7 +7,14 @@ module Store {
     export var companies: WinJS.Binding.List<string>;
 
     export function showCart() {
-        console.log("cart");
+        var contentDialog = document.querySelector(".win-contentdialog").winControl;
+        contentDialog.show().then((e) => {
+          if (e.result === 'primary') {
+            alert('checkout');
+          } else {
+            alert('cancelled');
+          }
+          });
     }
 
     export function showProfile() {
