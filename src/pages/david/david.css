@@ -20,6 +20,16 @@
   font-family: "Symbols";
 }
 
+.pane-item-checkbox
+{
+  display: inline-block;
+}
+
+.pane-item-name
+{
+  display: inline-block;
+}
+
 .win-splitview-pane-closed .pane-section
 {
   margin-bottom: 50px;
@@ -30,7 +40,7 @@
   display: none;
 }
 
-.win-splitview-pane-closed .pane-item
+.win-splitview-pane-closed .pane-item-group
 {
   display: none;
 }
