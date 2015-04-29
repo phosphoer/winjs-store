@@ -9,12 +9,12 @@ module Store {
     export function showCart() {
         var contentDialog = document.querySelector(".win-contentdialog").winControl;
         contentDialog.show().then((e) => {
-          if (e.result === 'primary') {
-            alert('checkout');
-          } else {
-            alert('cancelled');
-          }
-          });
+            if (e.result === 'primary') {
+                alert('checkout');
+            } else {
+                alert('cancelled');
+            }
+        });
     }
 
     export function showProfile() {
@@ -25,14 +25,24 @@ module Store {
         console.log("settings");
     }
 
-     // Static Data Class 
+    // Static Data Class 
     export class Data {
         private static _sortingFunc: (left: ICatalogItem, right: ICatalogItem) => number = (a, b) => 0;
 
         static filteredData = new WinJS.Binding.List<ICatalogItem>();
 
-        static filterFunction = () => {
+        static filterData = (query?: string) => {
+            if (query) {
+                var filteredCatalog = Store.catalog.filter((item: ICatalogItem) => {
+                    return item.name.indexOf(query) >= 0 ||
+                        item.category.indexOf(query) >= 0 ||
+                        item.company.indexOf(query) >= 0 ||
+                        item.desc.indexOf(query) >= 0;
+                })
 
+                Data.refreshData();
+            }
+            
         }
 
         static get sortingFunc() {
