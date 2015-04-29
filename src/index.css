@@ -1,5 +1,10 @@
 #root {
-	/* Make room for the AppBar */
-	padding-top: 58px;
-	height: calc(100% - 58px);
+    /* Make room for the AppBar */
+    padding-top: 58px;
+    height: calc(100% - 58px);
+}
+
+#root #currentPage {
+    height: 100%;
+    position: relative;
 }
