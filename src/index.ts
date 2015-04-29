@@ -41,7 +41,7 @@
         });
     }
 
-    window.Store = {
+    window['Store'] = {
         catalog: catalog,
         categories: categories,
         categoriesList: new WinJS.Binding.List(categories),
