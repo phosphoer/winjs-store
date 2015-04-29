@@ -1,6 +1,31 @@
 ﻿///<reference path="../typings/winjs.d.ts" />
 ///<reference path="../typings/winjs-store.d.ts" />
 
+module Store {
+    export var catalog: ICatalogItem[];
+    export var categories: WinJS.Binding.List<string>;
+    export var companies: WinJS.Binding.List<string>;
+
+    export class Data {
+        private static _sortingFunc: (left: ICatalogItem, right: ICatalogItem) => number;
+
+        static filteredData = new WinJS.Binding.List<ICatalogItem>();
+
+        static get sortingFunc() {
+            return Data._sortingFunc;
+        }
+        static set sortingFunc(value: (left: ICatalogItem, right: ICatalogItem) => number) {
+            Data._sortingFunc = value;
+            Data.refreshData();
+        }
+
+        static refreshData() {
+            Data.filteredData.length = 0;
+            Data.filteredData.splice.apply(Data.filteredData,(<any>[0, 0]).concat(catalog.sort(Data.sortingFunc)))
+        }
+    }
+}
+
 (() => {
     var categories = ["Electronics", "Kitchen", "Books", "Furniture", "Outdoor"];
     var companies = [];
@@ -32,6 +57,7 @@
             category: category,
             company: companies[Math.random() * companies.length | 0],
             desc: loremIpsum[i % loremIpsum.length],
+            featured: featured,
             id: i,
             name: (featured ? "Featured " : "") + category + " item " + (i + 0),
             price: +(1 + Math.random() * 200).toFixed(2),
@@ -41,17 +67,13 @@
         });
     }
 
-    window.Store = {
-        catalog: catalog,
-        categories: categories,
-        categoriesList: new WinJS.Binding.List(categories),
-        companies: companies,
-        companiesList: new WinJS.Binding.List(companies)
-    };
-})();
+    Store.catalog = catalog;
+    Store.categories = new WinJS.Binding.List(categories);
+    Store.companies = new WinJS.Binding.List(companies);
 
-window.addEventListener("DOMContentLoaded",() => {
-    WinJS.UI.processAll().then(() => {
-        WinJS.Navigation.navigate(Application.navigator.home);
+    window.addEventListener("DOMContentLoaded",() => {
+        WinJS.UI.processAll().then(() => {
+            WinJS.Navigation.navigate(Application.navigator.home);
+        });
     });
-});
+})();

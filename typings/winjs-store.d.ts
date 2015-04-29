@@ -1,16 +1,10 @@
-
-declare module Store {
-    catalog: ICatalogItem[];
-    categories: string[];
-    companies: string[];
-}
-
 interface ICatalogItem {
     id: number;
     name: string;
     desc: string;
     category: string;
     company: string;
+    featured: boolean;
     ratingAvg: number;
     ratingCount: number;
     reviews: string[];
@@ -18,7 +12,7 @@ interface ICatalogItem {
 }
 
 declare module Application {
-    export var navigator = {
+    export var navigator: {
         home: string
     }
 }

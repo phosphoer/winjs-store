@@ -8,7 +8,18 @@
 </head>
 
 <body>
-	Search
-	<p><button onclick="WinJS.Navigation.navigate('/pages/detail/detail.html');">Navigate to Detail Page</button></p>
+    Search
+    <p><button onclick="WinJS.Navigation.navigate('/pages/detail/detail.html');">Navigate to Detail Page</button></p>
+
+    <div data-win-control="WinJS.UI.ToolBar">
+        <div data-win-control="WinJS.UI.Command" data-win-options="{ label: 'Search', type: 'content' }">
+            <div id="searchBox" class="win-interactive" data-win-control="WinJS.UI.SearchBox" data-win-options="{ placeholderText:'Search the catalog...' }"></div>
+        </div>
+        <button data-win-control="WinJS.UI.Command" data-win-options="{ id: 'featured', icon: 'solidstar', type: 'toggle', label: 'Featured' }" class="sortingCommand"></button>
+        <button data-win-control="WinJS.UI.Command" data-win-options="{ id: 'price', icon: 'onebar', type: 'toggle', label: '$ - Low to High' }" class="sortingCommand"></button>
+        <button data-win-control="WinJS.UI.Command" data-win-options="{ id: 'priceDesc', icon: 'fourbars', type: 'toggle', label: '$ - High to Low' }" class="sortingCommand"></button>
+        <button data-win-control="WinJS.UI.Command" data-win-options="{ id: 'ratings', icon: 'like', type: 'toggle', label: 'Ratings - High to Low' }" class="sortingCommand"></button>
+        <button data-win-control="WinJS.UI.Command" data-win-options="{ id: 'ratingsDesc', icon: 'dislike', type: 'toggle', label: 'Ratings - Low to High' }" class="sortingCommand"></button>
+    </div>
 </body>
 </html>
