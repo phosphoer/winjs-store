@@ -7,7 +7,7 @@ module Store {
     export var companies: WinJS.Binding.List<string>;
 
     export class Data {
-        private static _sortingFunc: (left: ICatalogItem, right: ICatalogItem) => number;
+        private static _sortingFunc: (left: ICatalogItem, right: ICatalogItem) => number = (a, b) => 0;
 
         static filteredData = new WinJS.Binding.List<ICatalogItem>();
 
@@ -70,6 +70,7 @@ module Store {
     Store.catalog = catalog;
     Store.categories = new WinJS.Binding.List(categories);
     Store.companies = new WinJS.Binding.List(companies);
+    Store.Data.refreshData();
 
     window.addEventListener("DOMContentLoaded",() => {
         WinJS.UI.processAll().then(() => {
