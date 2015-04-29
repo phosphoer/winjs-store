@@ -59,11 +59,20 @@ function merge(a, b) {
     },
     _addToCart: function (eventObject) {
       var amountInput = this.element.querySelector(".amountInput");
+      var addToCartBtn = this.element.querySelector(".addToCartBtn");
       Store.Cart.addToCart({
         item: this._item,
         quantity: parseInt(amountInput.value, 10)
       });
-      amountInput.value = 1;
+      addToCartBtn.disabled = true;
+      addToCartBtn.textContent = "Cart Updated";
+      amountInput.disabled = true;
+      setTimeout(() => {
+        addToCartBtn.disabled = false;
+        addToCartBtn.textContent = "Add to Cart";
+        amountInput.value = 1;
+        amountInput.disabled = false;
+      }, 1500);
     }
   });
 })();
