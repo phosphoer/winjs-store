@@ -11,9 +11,14 @@
 }
 
 .resultListTemplate .resultListTemplateTop .placeholderImg {
-	width: 128px;
-	height: 128px;
+	width: 160px;
+	height: 160px;
 	background-color: gray;
+	display: inline-block;
+}
+
+.resultListTemplate .resultListTemplateTop .name {
+	vertical-align: top;
 }
 
 .resultListTemplate .resultListTemplateBottom {
