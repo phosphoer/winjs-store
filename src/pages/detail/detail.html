@@ -9,28 +9,36 @@
     <div id="detailPage">
         <div class="header">
             <button data-win-control="WinJS.UI.BackButton"></button>
-            <h1>Blah</h1>
+            <h1 data-win-bind="textContent: item.name"></h1>
         </div>
 
         <div class="body">
             <div class="infoPivot" data-win-control="WinJS.UI.Pivot">
                 <div data-win-control="WinJS.UI.PivotItem" data-win-options="{ 'header': 'Description' }">
-                        One
+                    <div data-win-bind="textContent: item.desc"></div>
                 </div>
                 <div data-win-control="WinJS.UI.PivotItem" data-win-options="{ 'header': 'Specs' }">
-                    Two
+                    <table data-win-control="WinJS.UI.Repeater" data-win-bind="this['winControl'].data: specParams">
+                        <tr>
+                            <th data-win-bind="textContent: label"></th>
+                            <td data-win-bind="textContent: value"></td>
+                        </tr>
+                    </table>
                 </div>
                 <div data-win-control="WinJS.UI.PivotItem" data-win-options="{ 'header': 'Reviews' }">
-                    Three
+                    <p><span data-win-bind="textContent: reviews.length"></span> review(s):</p>
+                    <ul data-win-control="WinJS.UI.Repeater" data-win-bind="this['winControl'].data: reviews">
+                        <li data-win-bind="textContent: this"></li>
+                    </ul>
                 </div>
             </div>
 
             <div class="details">
-                <div class="price">$19.99</div>
+                <div class="price">$<span data-win-bind="textContent: item.price"></span></div>
                 <div class="amount">
-                    Amount: <input type="text" value="1" />
+                    Amount: <input class="amountInput" type="text" value="1" />
                 </div>
-                <button>Add to Cart</button>
+                <button class="addToCartBtn">Add to Cart</button>
             </div>
         </div>
     </div>

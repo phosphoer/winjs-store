@@ -1,6 +1,11 @@
 ///<reference path="winjs.d.ts" />
 ///<reference path="seedrandom.d.ts" />
 
+interface ICartItem {
+    item: ICatalogItem;
+    quantity: number;
+}
+
 interface ICatalogItem {
     id: number;
     name: string;
