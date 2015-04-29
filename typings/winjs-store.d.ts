@@ -1,6 +1,6 @@
 
 declare module Store {
-    export var catalog: ICatalogItem[];
+    export var catalog: WinJS.Binding.List<ICatalogItem>;
     export var categories: string[];
     export var companies: string[];
 }

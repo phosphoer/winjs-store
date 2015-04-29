@@ -42,7 +42,7 @@
     }
 
     window['Store'] = {
-        catalog: catalog,
+        catalog: new WinJS.Binding.List(catalog),
         categories: categories,
         categoriesList: new WinJS.Binding.List(categories),
         companies: companies,

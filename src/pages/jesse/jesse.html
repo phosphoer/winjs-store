@@ -17,8 +17,8 @@
         <div id="status"></div>
     </div>
 
-    <div data-win-control="WinJS.UI.Repeater" data-win-options="{data: Data.items}">
-        <!--<div data-win-bind="value: id; textContent: description"></div>-->
+    <div data-win-control="WinJS.UI.Repeater" data-win-options="{data: window.Store.catalog}">
+        <!--<div id="jesserepeater">-->
         <div>
             <span data-win-bind="textContent: id"></span>
             <span data-win-bind="textContent: company"></span>
