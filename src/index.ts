@@ -31,7 +31,7 @@ module Store {
 
         static filteredData = new WinJS.Binding.List<ICatalogItem>();
 
-        static filterData = (query?: string) => {
+        static filterFunction = (query?: string) => {
             var filteredCatalog = Store.catalog.slice(0);
 
             if (query) {

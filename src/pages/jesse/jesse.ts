@@ -30,6 +30,7 @@
             function querySubmittedHandler(eventObject) {
                 var queryText = eventObject.detail.queryText;
                 WinJS.log && WinJS.log(queryText, "sample", "status");
+                window["Store"].Data.filterFunction(queryText);
             }
 
             var statusEl = <HTMLElement>(document.querySelector("#status"));
