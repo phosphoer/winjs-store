@@ -1,14 +1,38 @@
 <!doctype html>
 <html>
 <head>
-    <script src='../../../lib/winjs/js/winjs.js'></script>
-    <link rel='stylesheet' type='text/css' href='../../../lib/winjs/css/ui-light.css' />
-
-    <script src="detail.js"></script>
+    <link rel='stylesheet' type='text/css' href='detail.css' />
+        <script src="detail.js"></script>
 </head>
 
 <body>
-	Detail
-	<p><button onclick="WinJS.Navigation.back();">Back</button></p>
+    <div id="detailPage">
+        <div class="header">
+            <button data-win-control="WinJS.UI.BackButton"></button>
+            <h1>Blah</h1>
+        </div>
+
+        <div class="body">
+            <div class="infoPivot" data-win-control="WinJS.UI.Pivot">
+                <div data-win-control="WinJS.UI.PivotItem" data-win-options="{ 'header': 'Description' }">
+                        One
+                </div>
+                <div data-win-control="WinJS.UI.PivotItem" data-win-options="{ 'header': 'Specs' }">
+                    Two
+                </div>
+                <div data-win-control="WinJS.UI.PivotItem" data-win-options="{ 'header': 'Reviews' }">
+                    Three
+                </div>
+            </div>
+
+            <div class="details">
+                <div class="price">$19.99</div>
+                <div class="amount">
+                    Amount: <input type="text" value="1" />
+                </div>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

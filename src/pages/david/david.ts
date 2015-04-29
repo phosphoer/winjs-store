@@ -8,4 +8,9 @@
         unload: function() {
         }
     });
+
+    window['Store'].expandPane = function() {
+        var splitview: WinJS.UI.SplitView = document.querySelector("#splitview").winControl;
+        splitview.openPane();
+    };
 })();

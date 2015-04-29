@@ -1,0 +1,26 @@
+#detailPage {
+    height: 100%;
+}
+
+#detailPage .header {
+    height: 55px;
+    display: flex;
+    align-items: center;
+}
+
+#detailPage .body {
+    height: calc(100% - 55px); /* Leave room for header */
+    display: flex;
+}
+
+#detailPage .body .infoPivot {
+    flex: 1 1;
+}
+
+#detailPage .body .details {
+    flex: none;
+}
+
+#detailPage .details .amount input {
+    width: 64px;
+}
