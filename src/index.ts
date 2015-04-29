@@ -44,7 +44,9 @@
     window.Store = {
         catalog: catalog,
         categories: categories,
-        companies: companies
+        categoriesList: new WinJS.Binding.List(categories),
+        companies: companies,
+        companiesList: new WinJS.Binding.List(companies)
     };
 })();
 
