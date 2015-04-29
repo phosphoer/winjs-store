@@ -10,6 +10,7 @@
     });
 
     window['Store'].expandPane = function() {
-        console.log('test');
+        var splitview: WinJS.UI.SplitView = document.querySelector("#splitview").winControl;
+        splitview.openPane();
     };
 })();

@@ -2,17 +2,18 @@
 {
   margin-top: 10px;
   margin-bottom: 10px;
+  padding-left: 8px;
 }
 
 .pane-title
 {
   margin-bottom: 5px;
   font-size: 18px;
+  display: inline-block;
 }
 
 .pane-title-icon
 {
-  margin-left: 8px;
   display: inline-block;
   font-size: 30px;
   line-height: 30px;
