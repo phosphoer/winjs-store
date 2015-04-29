@@ -1,8 +1,8 @@
 
 declare module Store {
-    catalog: ICatalogItem[];
-    categories: string[];
-    companies: string[];
+    export var catalog: ICatalogItem[];
+    export var categories: string[];
+    export var companies: string[];
 }
 
 interface ICatalogItem {
@@ -18,7 +18,7 @@ interface ICatalogItem {
 }
 
 declare module Application {
-    export var navigator = {
+    export var navigator: {
         home: string
     }
 }
