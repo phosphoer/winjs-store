@@ -1,25 +1,25 @@
 <!doctype html>
 <html>
-<head>
-    <script src='lib/winjs/js/winjs.js'></script>
-    <link rel='stylesheet' type='text/css' href='lib/winjs/css/ui-light.css' />
-
-    <script src="lib/seedrandom.js"></script>
-    <script src="lib/navigator.js"></script>
-
-    <link rel='stylesheet' type='text/css' href='index.css' />
-    <script src="index.js"></script>
-</head>
-
-<body>
-    <div data-win-control="WinJS.UI.AppBar" data-win-options="{ placement: 'top' }">
-        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ label:'Profile', icon:'settings', tooltip:'Settings',section:'primary' }"></button>
-    </div>
-    <div id="root">
-        <div id="currentPage" data-win-control="Application.PageControlNavigator" data-win-options="{
-	    	home: '/pages/search/search.html'
-		}">
+    
+    <head>
+        <script src='lib/winjs/js/winjs.js'></script>
+        <link rel='stylesheet' type='text/css' href='lib/winjs/css/ui-light.css' />
+        <script src="lib/seedrandom.js"></script>
+        <script src="lib/navigator.js"></script>
+        <link rel='stylesheet' type='text/css' href='index.css' />
+        <script src="index.js"></script>
+    </head>
+    
+    <body>
+        <div data-win-control="WinJS.UI.AppBar" data-win-options="{ placement: 'top' }">
+            <div id="appbarLabel" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ type: 'content' }">Hi User</div>
+            <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ label:'Cart', icon:'shop', tooltip:'Cart' }"></button>
+            <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ label:'Profile', icon:'contact', tooltip:'Settings' }"></button>
+            <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ label:'Settings', icon:'settings', tooltip:'Settings' }"></button>
         </div>
-    </div>
-</body>
+        <div id="root">
+            <div id="currentPage" data-win-control="Application.PageControlNavigator" data-win-options="{ home: '/pages/search/search.html' }"></div>
+        </div>
+    </body>
+
 </html>

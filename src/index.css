@@ -8,3 +8,8 @@
     height: 100%;
     position: relative;
 }
+
+#appbarLabel {
+    flex-grow: 1;
+    text-align: left;
+}
