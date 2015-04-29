@@ -42,12 +42,16 @@
     }
 
     window.Store = {
-        catalog: catalog
+        catalog: catalog,
+        categories: categories,
+        categoriesList: new WinJS.Binding.List(categories),
+        companies: companies,
+        companiesList: new WinJS.Binding.List(companies)
     };
 })();
 
 window.addEventListener("DOMContentLoaded",() => {
     WinJS.UI.processAll().then(() => {
-
+        WinJS.Navigation.navigate(Application.navigator.home);
     });
 });
