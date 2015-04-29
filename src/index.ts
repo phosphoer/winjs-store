@@ -59,7 +59,8 @@ module Store {
             return Data._currentQuery;
         }
         static set currentQuery(value: string) {
-            if (value && value !== Data._currentQuery) {
+            value = value || "";
+            if (value !== Data._currentQuery) {
                 Data._currentQuery = value;
                 Data.refreshData();
             }
