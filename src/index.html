@@ -13,9 +13,9 @@
     <body>
         <div data-win-control="WinJS.UI.AppBar" data-win-options="{ placement: 'top' }">
             <div id="appbarLabel" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ type: 'content' }">Hi User</div>
-            <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ label:'Cart', icon:'shop', tooltip:'Cart' }"></button>
-            <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ label:'Profile', icon:'contact', tooltip:'Settings' }"></button>
-            <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ label:'Settings', icon:'settings', tooltip:'Settings' }"></button>
+            <button onclick="Store.showCart()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ label:'Cart', icon:'shop', tooltip:'Cart' }"></button>
+            <button onclick="Store.showProfile()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ label:'Profile', icon:'contact', tooltip:'Profile' }"></button>
+            <button onclick="Store.showSettings()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ label:'Settings', icon:'settings', tooltip:'Settings' }"></button>
         </div>
         <div id="root">
             <div id="currentPage" data-win-control="Application.PageControlNavigator" data-win-options="{ home: '/pages/search/search.html' }"></div>

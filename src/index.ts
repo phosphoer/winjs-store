@@ -6,6 +6,18 @@ module Store {
     export var categories: WinJS.Binding.List<string>;
     export var companies: WinJS.Binding.List<string>;
 
+    export function showCart() {
+        console.log("cart");
+    }
+
+    export function showProfile() {
+        console.log("profile");
+    }
+
+    export function showSettings() {
+        console.log("settings");
+    }
+
     export class Data {
         private static _sortingFunc: (left: ICatalogItem, right: ICatalogItem) => number = (a, b) => 0;
 
@@ -21,7 +33,7 @@ module Store {
 
         static refreshData() {
             Data.filteredData.length = 0;
-            Data.filteredData.splice.apply(Data.filteredData,(<any>[0, 0]).concat(catalog.sort(Data.sortingFunc)));
+            Data.filteredData.splice.apply(Data.filteredData, (<any>[0, 0]).concat(catalog.sort(Data.sortingFunc)));
         }
     }
 
@@ -89,7 +101,7 @@ module Store {
     Store.companies = new WinJS.Binding.List(companies);
     Store.Data.refreshData();
 
-    window.addEventListener("DOMContentLoaded",() => {
+    window.addEventListener("DOMContentLoaded", () => {
         WinJS.UI.processAll().then(() => {
             WinJS.Navigation.navigate(Application.navigator.home);
         });
