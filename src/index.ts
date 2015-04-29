@@ -32,6 +32,8 @@ module Store {
         static filteredData = new WinJS.Binding.List<ICatalogItem>();
 
         static filterData = (query?: string) => {
+            var filteredCatalog = Store.catalog.slice(0);
+
             if (query) {
                 var filteredCatalog = Store.catalog.filter((item: ICatalogItem) => {
                     return item.name.indexOf(query) >= 0 ||
@@ -39,10 +41,9 @@ module Store {
                         item.company.indexOf(query) >= 0 ||
                         item.desc.indexOf(query) >= 0;
                 })
-
-                Data.refreshData();
             }
-            
+
+            Data.filteredData = new WinJS.Binding.List<ICatalogItem>(filteredCatalog);
         }
 
         static get sortingFunc() {
