@@ -62,7 +62,7 @@ module Store {
             name: (featured ? "Featured " : "") + category + " item " + (i + 0),
             price: +(1 + Math.random() * 200).toFixed(2),
             ratingAvg: +(Math.random() * 5).toFixed(2),
-            ratingCount: (Math.random() > 0.8) ? (100 + Math.random() * 10000) : (Math.random() * 50),
+            ratingCount: (popular ? (100 + Math.random() * 10000) : (Math.random() * 50)) | 0,
             reviews: reviews
         });
     }

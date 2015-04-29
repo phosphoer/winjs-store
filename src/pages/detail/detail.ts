@@ -1,4 +1,6 @@
 ///<reference path="../../../typings/winjs.d.ts" />
+///<reference path="../../../typings/winjs-store.d.ts" />
+///<reference path="../../index.ts" />
 
 function merge(a, b) {
   var result = {};
@@ -14,21 +16,8 @@ function merge(a, b) {
 (() => {
   WinJS.UI.Pages.define("/pages/detail/detail.html", {
     ready: function (element, options) {
-      var item = {
-        id: 1,
-        name: "Car",
-        desc: "It's fast!",
-        category: "Vehicles",
-        company: "Edison",
-        ratingAvg: 3.8,
-        ratingCount: 10,
-        reviews: [
-          "5 stars, hated it!",
-          "Great!",
-          "Meh"
-        ],
-        price: 24.99
-      };
+      var index = Math.random() * Store.Data.filteredData.length | 0;
+      var item = Store.Data.filteredData.getAt(index);
       var specParams = [
         { label: "Name", prop: "name" },
         { label: "Category", prop: "category" },
