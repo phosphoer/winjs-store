@@ -75,4 +75,22 @@ function merge(a, b) {
       }, 1500);
     }
   });
+
+  WinJS.Namespace.define("Application", {
+      MediaPlayer: WinJS.Class.define((element, options) => {
+          // This control works around a WinJS.UI.MediaPlayer control
+          // bug where the video element doesn't get reparented in
+          // browsers that don't support canHaveHTML.
+          var videoElement = element.firstElementChild;
+          videoElement.parentNode.removeChild(videoElement);
+          var mediaPlayer = new WinJS.UI.MediaPlayer(element, options);
+          setTimeout(function() {
+              var container = element.querySelector(".win-mediaplayer-container");
+              container.insertBefore(videoElement, container.firstElementChild);
+              mediaPlayer.mediaElementAdapter.mediaElement = videoElement;
+          }, 200);
+      }, {
+
+      })
+  });
 })();
