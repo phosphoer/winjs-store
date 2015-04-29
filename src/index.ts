@@ -25,14 +25,26 @@ module Store {
         console.log("settings");
     }
 
-     // Static Data Class 
+     // Static Data Class
     export class Data {
         private static _sortingFunc: (left: ICatalogItem, right: ICatalogItem) => number = (a, b) => 0;
 
         static filteredData = new WinJS.Binding.List<ICatalogItem>();
 
-        static filterFunction = () => {
+        static filterFunction = (item: ICatalogItem):boolean => {
+            return Data.categoryFilterFunction(item) &&
+                   Data.queryFilterFunction(item);
+        }
 
+        static queryFilterFunction = (item: ICatalogItem): boolean => {
+            return true;
+        }
+
+        static categoryFilterFunction = (item: ICatalogItem):boolean => {
+            if (window['Application'].Pane.numCategoriesChecked === 0)
+                return true;
+
+            return window['Application'].Pane.categories[item.category];
         }
 
         static get sortingFunc() {
@@ -44,8 +56,10 @@ module Store {
         }
 
         static refreshData() {
+            var tempCatalog:ICatalogItem[] = catalog.filter(Data.filterFunction);
+
             Data.filteredData.length = 0;
-            Data.filteredData.splice.apply(Data.filteredData, (<any>[0, 0]).concat(catalog.sort(Data.sortingFunc)));
+            Data.filteredData.splice.apply(Data.filteredData, (<any>[0, 0]).concat(tempCatalog.sort(Data.sortingFunc)));
         }
     }
 
