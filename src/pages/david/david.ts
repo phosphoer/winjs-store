@@ -8,4 +8,8 @@
         unload: function() {
         }
     });
+
+    window['Store'].expandPane = function() {
+        console.log('test');
+    };
 })();
