@@ -24,6 +24,23 @@ module Store {
             Data.filteredData.splice.apply(Data.filteredData,(<any>[0, 0]).concat(catalog.sort(Data.sortingFunc)))
         }
     }
+
+    export class Cart {
+        static items = new WinJS.Binding.List<ICartItem>();
+
+        static addToCart(newCartItem: ICartItem): void {
+            for (var i = 0, len = Cart.items.length; i < len; i++) {
+                if (Cart.items.getAt(i).item.id === newCartItem.item.id) {
+                    var cartItem = Cart.items.getAt(i);
+                    cartItem.quantity += newCartItem.quantity;
+                    Cart.items.setAt(i, cartItem);
+                    return;
+                }
+            }
+
+            Cart.items.push(newCartItem);
+        }
+    }
 }
 
 (() => {

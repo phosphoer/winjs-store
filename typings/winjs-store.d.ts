@@ -1,3 +1,8 @@
+interface ICartItem {
+    item: ICatalogItem;
+    quantity: number;
+}
+
 interface ICatalogItem {
     id: number;
     name: string;
