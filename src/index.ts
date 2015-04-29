@@ -31,15 +31,26 @@ module Store {
 
         static filteredData = new WinJS.Binding.List<ICatalogItem>();
 
-        static filterFunction = (query?: string) => {
+        private static _currentQuery = "";
+        static get currentQuery() {
+            return Data._currentQuery;
+        }
+        static set currentQuery(value: string) {
+            if (value && value !== Data._currentQuery) {
+                Data._currentQuery = value;
+                Data.refreshData();
+            }
+        }
+
+        static filterFunction = () => {
             var filteredCatalog = Store.catalog.slice(0);
 
-            if (query) {
+            if (Data.currentQuery) {
                 var filteredCatalog = Store.catalog.filter((item: ICatalogItem) => {
-                    return item.name.indexOf(query) >= 0 ||
-                        item.category.indexOf(query) >= 0 ||
-                        item.company.indexOf(query) >= 0 ||
-                        item.desc.indexOf(query) >= 0;
+                    return item.name.indexOf(Data.currentQuery) >= 0 ||
+                        item.category.indexOf(Data.currentQuery) >= 0 ||
+                        item.company.indexOf(Data.currentQuery) >= 0 ||
+                        item.desc.indexOf(Data.currentQuery) >= 0;
                 })
             }
 
