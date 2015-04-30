@@ -96,6 +96,16 @@
           --window['Store'].Data.numCategoriesChecked;
 
         window['Store'].Data.refreshData();
+      },
+      companyCheckboxChanged: function(checkbox) {
+        window['Store'].Data.currentCompanies[checkbox.name] = checkbox.checked;
+        if (checkbox.checked)
+          ++window['Store'].Data.numCompaniesChecked;
+        else
+          --window['Store'].Data.numCompaniesChecked;
+
+        window['Store'].Data.refreshData();
       }
+
     });
 })();

@@ -52,10 +52,13 @@ module Store {
         }
 
         static categoryFilterFunction = (item: ICatalogItem): boolean => {
-            if (Data.numCategoriesChecked === 0)
-                return true;
+          if (Data.numCategoriesChecked > 0 && !Data.currentCategories[item.category])
+              return false;
 
-            return Data.currentCategories[item.category];
+          if (Data.numCompaniesChecked > 0 && !Data.currentCompanies[item.company])
+              return false;
+
+            return true;
         }
 
         private static _currentQuery = "";

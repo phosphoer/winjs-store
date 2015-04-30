@@ -26,6 +26,12 @@
             <div class='pane-section'>
                 <div class='pane-title-icon' onclick='Application.Pane.expandPane()'>&#xe13d;</div>
                 <div class='pane-title'>Company</div>
+                <div data-win-control='WinJS.UI.Repeater' data-win-options='{data: Store.companies}'>
+                    <div class='pane-item-group'>
+                        <input class='pane-item-checkbox' onchange='Application.Pane.companyCheckboxChanged(this)' data-win-bind='name: this' type='checkbox' />
+                        <div class='pane-item-name' data-win-bind='textContent: this'></div>
+                    </div>
+                </div>
             </div>
 
             <div class='pane-section'>
