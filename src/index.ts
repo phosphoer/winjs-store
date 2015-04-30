@@ -117,6 +117,8 @@ module Store {
 }
 
 (() => {
+    Math.seedrandom("WinJS");
+    
     var categories = ["Electronics", "Kitchen", "Books", "Furniture", "Outdoor"];
     var companies = ["MoneyGrab Inc.", "Rip-Off Corporation", "Buy Lo Sell Hi LLC", "Cheap Stuff Market", "No Support Retailer"];
 
@@ -132,8 +134,8 @@ module Store {
     for (var i = 0; i < 1000; i++) {
         var category = categories[Math.random() * categories.length | 0];
         var popular = Math.random() > 0.8;
-        var featured = popular ? (Math.random() > 0.8) : false;
-        var numReviews = popular ? (10 + Math.random() * 20) : (2 + Math.random() * 3);
+        var featured = popular ? (Math.random() > 0.9) : false;
+        var numReviews = popular ? (50 + Math.random() * 100) : (5 + Math.random() * 10);
 
         var reviews: string[] = [];
         for (var j = 0; j < numReviews; j++) {

@@ -3,7 +3,7 @@
 
 (() => {
     WinJS.UI.Pages.define("/pages/search/search.html", {
-        ready: function (element, options) {
+        ready: function(element, options) {
             this._handleFilterChanged = this._handleFilterChanged.bind(this);
 
             this._commands = document.querySelectorAll(".sortingCommand");
@@ -14,8 +14,8 @@
             this._commands[0].click();
 
             for (var i = 0; i < window['Store'].Data.currentCategories.length; ++i) {
-              var item = window['Store'].categories.getAt(i);
-              window['Store'].Data.currentCategories[item] = false;
+                var item = window['Store'].categories.getAt(i);
+                window['Store'].Data.currentCategories[item] = false;
             }
 
             function suggestionsRequestedHandler(eventObject) {
@@ -47,7 +47,7 @@
             searchBox.addEventListener("suggestionsrequested", suggestionsRequestedHandler);
             searchBox.addEventListener("querysubmitted", querySubmittedHandler);
         },
-        unload: function () {
+        unload: function() {
         },
 
         _commands: [],
@@ -62,6 +62,10 @@
             switch (target.winControl.id) {
                 case "featured":
                     Store.Data.sortingFunc = (a, b) => a.featured ? -1 : (b.featured ? 1 : 0);
+                    break;
+
+                case "mostReviews":
+                    Store.Data.sortingFunc = (a, b) => a.reviews.length > b.reviews.length ? -1 : (a.reviews.length === b.reviews.length ? 0 : 1);
                     break;
 
                 case "price":
@@ -84,28 +88,28 @@
     });
 
     WinJS.Namespace.define('Application.Pane', {
-      expandPane: function() {
-        var splitview: WinJS.UI.SplitView = document.querySelector("#splitview").winControl;
-        splitview.openPane();
-      },
-      checkboxChanged: function(checkbox) {
-        window['Store'].Data.currentCategories[checkbox.name] = checkbox.checked;
-        if (checkbox.checked)
-          ++window['Store'].Data.numCategoriesChecked;
-        else
-          --window['Store'].Data.numCategoriesChecked;
+        expandPane: function() {
+            var splitview: WinJS.UI.SplitView = document.querySelector("#splitview").winControl;
+            splitview.openPane();
+        },
+        checkboxChanged: function(checkbox) {
+            window['Store'].Data.currentCategories[checkbox.name] = checkbox.checked;
+            if (checkbox.checked)
+                ++window['Store'].Data.numCategoriesChecked;
+            else
+                --window['Store'].Data.numCategoriesChecked;
 
-        window['Store'].Data.refreshData();
-      },
-      companyCheckboxChanged: function(checkbox) {
-        window['Store'].Data.currentCompanies[checkbox.name] = checkbox.checked;
-        if (checkbox.checked)
-          ++window['Store'].Data.numCompaniesChecked;
-        else
-          --window['Store'].Data.numCompaniesChecked;
+            window['Store'].Data.refreshData();
+        },
+        companyCheckboxChanged: function(checkbox) {
+            window['Store'].Data.currentCompanies[checkbox.name] = checkbox.checked;
+            if (checkbox.checked)
+                ++window['Store'].Data.numCompaniesChecked;
+            else
+                --window['Store'].Data.numCompaniesChecked;
 
-        window['Store'].Data.refreshData();
-      }
+            window['Store'].Data.refreshData();
+        }
 
     });
 })();
