@@ -31,27 +31,23 @@ module Store {
 
         static filteredData = new WinJS.Binding.List<ICatalogItem>();
 
-        static filterFunction = (item: ICatalogItem):boolean => {
+        static filterFunction = (item: ICatalogItem): boolean => {
             return Data.categoryFilterFunction(item) &&
-                   Data.queryFilterFunction(item);
+                Data.queryFilterFunction(item);
         }
 
         static queryFilterFunction = (item: ICatalogItem): boolean => {
-            if (Data.currentQuery) {
-                return item.name.indexOf(Data.currentQuery) >= 0 ||
-                    item.category.indexOf(Data.currentQuery) >= 0 ||
-                    item.company.indexOf(Data.currentQuery) >= 0 ||
-                    item.desc.indexOf(Data.currentQuery) >= 0;
-            }
-
-            return true;
+            return item.name.indexOf(Data.currentQuery) >= 0 ||
+                item.category.indexOf(Data.currentQuery) >= 0 ||
+                item.company.indexOf(Data.currentQuery) >= 0 ||
+                item.desc.indexOf(Data.currentQuery) >= 0;
         }
 
         static categoryFilterFunction = (item: ICatalogItem): boolean => {
-          if (Data.numCategoriesChecked === 0)
-            return true;
+            if (Data.numCategoriesChecked === 0)
+                return true;
 
-          return Data.currentCategories[item.category];
+            return Data.currentCategories[item.category];
         }
 
         private static _currentQuery = "";
@@ -78,7 +74,7 @@ module Store {
         }
 
         static refreshData() {
-            var tempCatalog:ICatalogItem[] = catalog.filter(Data.filterFunction);
+            var tempCatalog: ICatalogItem[] = catalog.filter(Data.filterFunction);
 
             Data.filteredData.length = 0;
             Data.filteredData.splice.apply(Data.filteredData, (<any>[0, 0]).concat(tempCatalog.sort(Data.sortingFunc)));
