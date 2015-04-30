@@ -45,10 +45,10 @@ module Store {
         }
 
         static queryFilterFunction = (item: ICatalogItem): boolean => {
-            return item.name.indexOf(Data.currentQuery) >= 0 ||
-                item.category.indexOf(Data.currentQuery) >= 0 ||
-                item.company.indexOf(Data.currentQuery) >= 0 ||
-                item.desc.indexOf(Data.currentQuery) >= 0;
+            return item.name.toLowerCase().indexOf(Data.currentQuery.toLowerCase()) >= 0 ||
+                item.category.toLowerCase().indexOf(Data.currentQuery.toLowerCase()) >= 0 ||
+                item.company.toLowerCase().indexOf(Data.currentQuery.toLowerCase()) >= 0 ||
+                item.desc.toLowerCase().indexOf(Data.currentQuery.toLowerCase()) >= 0;
         }
 
         static categoryFilterFunction = (item: ICatalogItem): boolean => {
