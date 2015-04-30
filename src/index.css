@@ -1,11 +1,12 @@
 body {
-    font-size: 20pt;
+    font-size: 16pt;
+    background-color: rgb(238, 238, 238);
 }
 
 #root {
     /* Make room for the AppBar */
-    padding-top: 58px;
-    height: calc(100% - 58px);
+    padding-top: 48px;
+    height: calc(100% - 48px);
 }
 
 #root #currentPage {
@@ -13,7 +14,23 @@ body {
     position: relative;
 }
 
+#appBar .win-commandingsurface-actionarea {
+    background-color: rgb(68, 34, 87);
+}
+
+.logoArea {
+    position: relative;
+    background-color: rgb(68, 34, 87);
+    height: 70px;
+}
+
+.logoArea > * {
+    position: absolute;
+}
+
 #appbarLabel {
-    flex-grow: 1;
     text-align: left;
+    font-size: 16px;
+    line-height: 16px;
+    align-self: center;
 }

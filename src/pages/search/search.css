@@ -30,6 +30,11 @@
   display: inline-block;
 }
 
+.win-splitview-pane {
+  background-color: rgb(52, 18, 69);
+  color: rgb(220, 220, 220);
+}
+
 .win-splitview-pane-closed .pane-section
 {
   margin-bottom: 50px;

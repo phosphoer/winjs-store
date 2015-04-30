@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var config = require('../config');
 var browserSync  = require('browser-sync');
 
-var tasks = ['js', 'markup', 'lib'];
+var tasks = ['js', 'markup', 'lib', 'images'];
 
 tasks.forEach(function(task) {
   gulp.task(task, function() {

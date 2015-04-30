@@ -11,13 +11,17 @@
     </head>
     
     <body>
-        <div data-win-control="WinJS.UI.AppBar" data-win-options="{ placement: 'top' }">
+        <div id="appBar" data-win-control="WinJS.UI.AppBar" data-win-options="{ placement: 'top' }" class="win-ui-dark">
             <div id="appbarLabel" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ type: 'content' }">Hi User</div>
             <button onclick="Store.showCart()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ label:'Cart', icon:'shop', tooltip:'Cart' }"></button>
             <button onclick="Store.showProfile()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ label:'Profile', icon:'contact', tooltip:'Profile' }"></button>
             <button onclick="Store.showSettings()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ label:'Settings', icon:'settings', tooltip:'Settings' }"></button>
         </div>
         <div id="root">
+            <div class="logoArea">
+                <img src="images/logo.png" />
+                <img src="images/trywinjs-hero.png" />
+            </div>
             <div id="currentPage" data-win-control="Application.PageControlNavigator" data-win-options="{ home: '/pages/search/search.html' }"></div>
         </div>
         
