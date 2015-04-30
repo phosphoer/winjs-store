@@ -89,11 +89,11 @@
 
 .scroller {
     overflow:scroll;
-    flex-grow: 1;
+    flex: auto;
 }
 
 .win-toolbar {
-    flex-shrink: 0;
+    flex: none;
 }
 
 .pane-contents {
