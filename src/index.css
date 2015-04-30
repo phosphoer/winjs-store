@@ -6,7 +6,7 @@ body {
 #root {
     /* Make room for the AppBar */
     padding-top: 48px;
-    height: calc(100% - 48px);
+    height: calc(100% - 48px - 70px);
 }
 
 #root #currentPage {

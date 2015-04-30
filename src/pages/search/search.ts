@@ -3,15 +3,17 @@
 
 (() => {
     WinJS.UI.Pages.define("/pages/search/search.html", {
+        _commands: <HTMLButtonElement[]>[],
+        
         ready: function(element, options) {
             this._handleFilterChanged = this._handleFilterChanged.bind(this);
 
-            var commands = <HTMLButtonElement[]><any>document.querySelectorAll(".sortingCommand");
-            for (var i = 0; i < commands.length; i++) {
-                var cmd = commands[i];
+            this._commands = <HTMLButtonElement[]><any>document.querySelectorAll(".sortingCommand");
+            for (var i = 0; i < this._commands.length; i++) {
+                var cmd = this._commands[i];
                 cmd.addEventListener("click", this._handleFilterChanged);
             }
-            commands[0].click();
+            this._commands[0].click();
 
             for (var i = 0; i < window['Store'].Data.currentCategories.length; ++i) {
                 var item = window['Store'].categories.getAt(i);
@@ -24,9 +26,9 @@
         },
 
         unload: function() {
-            var commands = document.querySelectorAll(".sortingCommand");
-            for (var i = 0; i < commands.length; i++) {
-                var cmd = commands[i];
+            this._commands = document.querySelectorAll(".sortingCommand");
+            for (var i = 0; i < this._commands.length; i++) {
+                var cmd = this._commands[i];
                 cmd.removeEventListener("click", this._handleFilterChanged);
             }
 
