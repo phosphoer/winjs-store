@@ -6,51 +6,59 @@
         ready: function(element, options) {
             this._handleFilterChanged = this._handleFilterChanged.bind(this);
 
-            this._commands = document.querySelectorAll(".sortingCommand");
-            for (var i = 0; i < this._commands.length; i++) {
-                var cmd = this._commands[i];
+            var commands = <HTMLButtonElement[]><any>document.querySelectorAll(".sortingCommand");
+            for (var i = 0; i < commands.length; i++) {
+                var cmd = commands[i];
                 cmd.addEventListener("click", this._handleFilterChanged);
             }
-            this._commands[0].click();
+            commands[0].click();
 
             for (var i = 0; i < window['Store'].Data.currentCategories.length; ++i) {
                 var item = window['Store'].categories.getAt(i);
                 window['Store'].Data.currentCategories[item] = false;
             }
 
-            function suggestionsRequestedHandler(eventObject) {
-                var queryText = eventObject.detail.queryText,
-                    query = queryText.toLowerCase(),
-                    suggestionCollection = eventObject.detail.searchSuggestionCollection;
-                if (queryText.length > 0) {
+            var searchBox = document.querySelector("#searchbox");
+            searchBox.addEventListener("suggestionsrequested", this._suggestionsRequestedHandler);
+            searchBox.addEventListener("querysubmitted", this._querySubmittedHandler);
+        },
 
-                    var catalog = Store.catalog;
-                    var len = catalog.length;
-
-                    var matchesFound = 0;
-                    for (var i = 0; i < len && matchesFound < 6; i++) {
-                        if (catalog[i].name.toLowerCase().indexOf(query) >= 0) {
-                            suggestionCollection.appendQuerySuggestion(catalog[i].name);
-                            matchesFound++;
-                        }
-                    }
-                }
-            }
-
-            function querySubmittedHandler(eventObject) {
-                var queryText = eventObject.detail.queryText;
-                Store.Data.currentQuery = queryText;
-                Store.Data.refreshData();
+        unload: function() {
+            var commands = document.querySelectorAll(".sortingCommand");
+            for (var i = 0; i < commands.length; i++) {
+                var cmd = commands[i];
+                cmd.removeEventListener("click", this._handleFilterChanged);
             }
 
             var searchBox = document.querySelector("#searchbox");
-            searchBox.addEventListener("suggestionsrequested", suggestionsRequestedHandler);
-            searchBox.addEventListener("querysubmitted", querySubmittedHandler);
-        },
-        unload: function() {
+            searchBox.removeEventListener("suggestionsrequested", this._suggestionsRequestedHandler);
+            searchBox.removeEventListener("querysubmitted", this._querySubmittedHandler);
         },
 
-        _commands: [],
+        _suggestionsRequestedHandler: function(eventObject) {
+            var queryText = eventObject.detail.queryText,
+                query = queryText.toLowerCase(),
+                suggestionCollection = eventObject.detail.searchSuggestionCollection;
+            if (queryText.length > 0) {
+
+                var catalog = Store.catalog;
+                var len = catalog.length;
+
+                var matchesFound = 0;
+                for (var i = 0; i < len && matchesFound < 6; i++) {
+                    if (catalog[i].name.toLowerCase().indexOf(query) >= 0) {
+                        suggestionCollection.appendQuerySuggestion(catalog[i].name);
+                        matchesFound++;
+                    }
+                }
+            }
+        },
+
+        _querySubmittedHandler: function(eventObject) {
+            var queryText = eventObject.detail.queryText;
+            Store.Data.currentQuery = queryText;
+            Store.Data.refreshData();
+        },
 
         _handleFilterChanged(e) {
             var target = e.currentTarget;
