@@ -8,11 +8,12 @@ module Store {
 
     export function showCart() {
         var contentDialog = document.querySelector("#cartDialog").winControl;
+        var numItems = 0;
+        Cart.items.forEach(x => numItems += x.quantity)
+        document.querySelector("#cartContent").textContent = "You have " + numItems + " item(s) in your cart.";
         contentDialog.show().then((e) => {
             if (e.result === 'primary') {
-                alert('checkout');
-            } else {
-                alert('cancelled');
+                Cart.items.length = 0;
             }
         });
     }
@@ -30,7 +31,14 @@ module Store {
     }
 
     export function showSettings() {
-        console.log("settings");
+        var dialogElement = document.querySelector("#settingsDialog");
+        var dialog = dialogElement.winControl;
+        var inputElement = (<HTMLInputElement>dialogElement.querySelector("input"));
+        var searchBox: WinJS.UI.SearchBox = document.querySelector(".win-searchbox").winControl;
+        inputElement.checked = !searchBox.searchHistoryDisabled;
+        dialog.show().then(e => {
+            searchBox.searchHistoryDisabled = !inputElement.checked;
+        });
     }
 
     // Static Data Class
@@ -51,11 +59,11 @@ module Store {
         }
 
         static categoryFilterFunction = (item: ICatalogItem): boolean => {
-          if (Data.numCategoriesChecked > 0 && !Data.currentCategories[item.category])
-              return false;
+            if (Data.numCategoriesChecked > 0 && !Data.currentCategories[item.category])
+                return false;
 
-          if (Data.numCompaniesChecked > 0 && !Data.currentCompanies[item.company])
-              return false;
+            if (Data.numCompaniesChecked > 0 && !Data.currentCompanies[item.company])
+                return false;
 
             return true;
         }
@@ -118,7 +126,7 @@ module Store {
 
 (() => {
     Math.seedrandom("WinJS");
-    
+
     var categories = ["Electronics", "Kitchen", "Books", "Furniture", "Outdoor"];
     var companies = ["MoneyGrab Inc.", "Rip-Off Corporation", "Buy Lo Sell Hi LLC", "Cheap Stuff Market", "No Support Retailer"];
 

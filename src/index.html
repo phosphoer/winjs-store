@@ -12,7 +12,7 @@
     
     <body>
         <div id="appBar" data-win-control="WinJS.UI.AppBar" data-win-options="{ placement: 'top' }" class="win-ui-dark">
-            <div id="appbarLabel" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ type: 'content' }">Hi User</div>
+            <div id="appbarLabel" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ type: 'content' }">Hi, Customer</div>
             <button onclick="Store.showCart()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ label:'Cart', icon:'shop', tooltip:'Cart' }"></button>
             <button onclick="Store.showProfile()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ label:'Profile', icon:'contact', tooltip:'Profile' }"></button>
             <button onclick="Store.showSettings()" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ label:'Settings', icon:'settings', tooltip:'Settings' }"></button>
@@ -25,16 +25,23 @@
             <div id="currentPage" data-win-control="Application.PageControlNavigator" data-win-options="{ home: '/pages/search/search.html' }"></div>
         </div>
         <div id="cartDialog" data-win-control="WinJS.UI.ContentDialog" data-win-options="{
-            title: 'Main instruction',
-            primaryCommandText: 'button1',
-            secondaryCommandText: 'button2'
-        }">Use the content area to present additional information helpful to understanding or using the dialog. You can use this area
-            to provide more detail or define terminology. Don't repeat the main instruction with slightly different wording.</div>
-        <div
-        id="profileDialog" data-win-control="WinJS.UI.ContentDialog" data-win-options="{ title: 'Change name', primaryCommandText: 'Ok', secondaryCommandText: 'Cancel' }">
+            title: 'Shopping Cart',
+            primaryCommandText: 'Clear Cart',
+            secondaryCommandText: 'Close'
+        }">
+            <div id="cartContent"></div>
+        </div>
+        <div id="profileDialog" data-win-control="WinJS.UI.ContentDialog" data-win-options="{
+            title: 'Change name',
+            primaryCommandText: 'Ok',
+            secondaryCommandText: 'Cancel' }">
             <input />
-            </div>
-            <div id="searchbox" class="win-interactive" data-win-control="WinJS.UI.SearchBox" data-win-options="{ placeholderText:'Search the catalog...' }"></div>
+        </div>
+        <div id="settingsDialog" data-win-control="WinJS.UI.ContentDialog" data-win-options="{
+            title: 'Settings' }">
+            <input type="checkbox" /> Search History
+        </div>
+        <div id="searchbox" class="win-interactive" data-win-control="WinJS.UI.SearchBox" data-win-options="{ placeholderText:'Search the catalog...' }"></div>
     </body>
 
 </html>

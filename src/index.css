@@ -37,6 +37,6 @@ body {
 
 .win-searchbox {
     position: absolute;
-    top: 8px;
-    right: 300px;
+    top: 64px;
+    right: 12px;
 }
