@@ -1,80 +1,85 @@
 <!doctype html>
 <html>
-<head>
-    <script src='../../../lib/winjs/js/winjs.js'></script>
-    <link rel='stylesheet' type='text/css' href='../../../lib/winjs/css/ui-light.css' />
-    <link rel='stylesheet' type='text/css' href='search.css' />
-
-    <script src="search.js"></script>
-</head>
-
-<body>
-    <div data-win-control='WinJS.UI.SplitView' id='splitview'>
-        <div class='pane-items'>
-
-            <div class='pane-section'>
-                <div class='pane-title-icon' onclick='Application.Pane.expandPane()'>&#xe16e;</div>
-                <div class='pane-title'>Category</div>
-                <div data-win-control='WinJS.UI.Repeater' data-win-options='{data: Store.categories}'>
-                    <div class='pane-item-group'>
-                        <input class='pane-item-checkbox' onchange='Application.Pane.checkboxChanged(this)' data-win-bind='name: this' type='checkbox' />
-                        <div class='pane-item-name' data-win-bind='textContent: this'></div>
+    
+    <head>
+        <script src='../../../lib/winjs/js/winjs.js'></script>
+        <link rel='stylesheet' type='text/css' href='../../../lib/winjs/css/ui-light.css' />
+        <link rel='stylesheet' type='text/css' href='search.css' />
+        <script src="search.js"></script>
+    </head>
+    
+    <body>
+        <div data-win-control='WinJS.UI.SplitView' id='splitview'>
+            <div class='pane-items'>
+                <div class='pane-section'>
+                    <div class='pane-title-icon' onclick='Application.Pane.expandPane()'>&#xe16e;</div>
+                    <div class='pane-title'>Category</div>
+                    <div data-win-control='WinJS.UI.Repeater' data-win-options='{data: Store.categories}'>
+                        <div class='pane-item-group'>
+                            <input class='pane-item-checkbox' onchange='Application.Pane.checkboxChanged(this)' data-win-bind='name: this' type='checkbox'
+                            />
+                            <div class='pane-item-name' data-win-bind='textContent: this'></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class='pane-section'>
-                <div class='pane-title-icon' onclick='Application.Pane.expandPane()'>&#xe13d;</div>
-                <div class='pane-title'>Company</div>
-                <div data-win-control='WinJS.UI.Repeater' data-win-options='{data: Store.companies}'>
-                    <div class='pane-item-group'>
-                        <input class='pane-item-checkbox' onchange='Application.Pane.companyCheckboxChanged(this)' data-win-bind='name: this' type='checkbox' />
-                        <div class='pane-item-name' data-win-bind='textContent: this'></div>
+                <div class='pane-section'>
+                    <div class='pane-title-icon' onclick='Application.Pane.expandPane()'>&#xe13d;</div>
+                    <div class='pane-title'>Company</div>
+                    <div data-win-control='WinJS.UI.Repeater' data-win-options='{data: Store.companies}'>
+                        <div class='pane-item-group'>
+                            <input class='pane-item-checkbox' onchange='Application.Pane.companyCheckboxChanged(this)' data-win-bind='name: this' type='checkbox'
+                            />
+                            <div class='pane-item-name' data-win-bind='textContent: this'></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class='pane-section'>
-                <div class='pane-title-icon' onclick='Application.Pane.expandPane()'>$</div>
-                <div class='pane-title'>Price</div>
-            </div>
-
-            <div class='pane-section'>
-                <div class='pane-title-icon' onclick='Application.Pane.expandPane()'>&#xe082;</div>
-                <div class='pane-title'>Rating</div>
-            </div>
-        </div>
-
-        <div class='pane-contents'>
-            <div data-win-control="WinJS.UI.ToolBar">
-                <div data-win-control="WinJS.UI.Command" data-win-options="{ label: 'Search', type: 'content' }">
-                    <div id="searchbox" class="win-interactive" data-win-control="WinJS.UI.SearchBox" data-win-options="{ placeholderText:'Search the catalog...' }"></div>
+                <div class='pane-section'>
+                    <div class='pane-title-icon' onclick='Application.Pane.expandPane()'>$</div>
+                    <div class='pane-title'>Price</div>
                 </div>
-                <button data-win-control="WinJS.UI.Command" data-win-options="{ id: 'featured', icon: 'solidstar', type: 'toggle', label: 'Featured' }" class="sortingCommand"></button>
-                <button data-win-control="WinJS.UI.Command" data-win-options="{ id: 'price', icon: 'onebar', type: 'toggle', label: '$ - Low to High' }" class="sortingCommand"></button>
-                <button data-win-control="WinJS.UI.Command" data-win-options="{ id: 'priceDesc', icon: 'fourbars', type: 'toggle', label: '$ - High to Low' }" class="sortingCommand"></button>
-                <button data-win-control="WinJS.UI.Command" data-win-options="{ id: 'ratings', icon: 'like', type: 'toggle', label: 'Ratings - High to Low' }" class="sortingCommand"></button>
-                <button data-win-control="WinJS.UI.Command" data-win-options="{ id: 'ratingsDesc', icon: 'dislike', type: 'toggle', label: 'Ratings - Low to High' }" class="sortingCommand"></button>
+                <div class='pane-section'>
+                    <div class='pane-title-icon' onclick='Application.Pane.expandPane()'>&#xe082;</div>
+                    <div class='pane-title'>Rating</div>
+                </div>
             </div>
-
-            <div class="scroller">
-                <div data-win-control="WinJS.UI.Repeater" data-win-options="{data: Store.Data.filteredData}">
-                    <div class="resultListTemplate">
-                        <div class="resultListTemplateTop">
-                            <div>
-                                <div class="placeholderImg"></div>
-                                <span class="name" data-win-bind="textContent: name"></span>
+            <div class='pane-contents'>
+                <div data-win-control="WinJS.UI.ToolBar">
+                    <button data-win-control="WinJS.UI.Command" data-win-options="{ id: 'featured', icon: 'solidstar', type: 'toggle', label: 'Featured' }"
+                    class="sortingCommand"></button>
+                    <button data-win-control="WinJS.UI.Command" data-win-options="{ id: 'price', icon: 'onebar', type: 'toggle', label: '$ - Low to High' }"
+                    class="sortingCommand"></button>
+                    <button data-win-control="WinJS.UI.Command" data-win-options="{ id: 'priceDesc', icon: 'fourbars', type: 'toggle', label: '$ - High to Low' }"
+                    class="sortingCommand"></button>
+                    <button data-win-control="WinJS.UI.Command" data-win-options="{ id: 'ratings', icon: 'like', type: 'toggle', label: 'Ratings - High to Low' }"
+                    class="sortingCommand"></button>
+                    <button data-win-control="WinJS.UI.Command" data-win-options="{ id: 'ratingsDesc', icon: 'dislike', type: 'toggle', label: 'Ratings - Low to High' }"
+                    class="sortingCommand"></button>
+                </div>
+                <div class="scroller">
+                    <div data-win-control="WinJS.UI.Repeater" data-win-options="{data: Store.Data.filteredData}">
+                        <div class="resultListTemplate">
+                            <div class="resultListTemplateTop">
+                                <div>
+                                    <div class="placeholderImg"></div>
+                                    <span class="name" data-win-bind="textContent: name"></span>
+                                </div>
+                                <span class="price" data-win-bind="textContent: price"></span>
                             </div>
-                            <span class="price" data-win-bind="textContent: price"></span>
-                        </div>
-                        <div class="resultListTemplateBottom">
-                            <div data-win-control="WinJS.UI.Rating" data-win-options="{ disabled: true }" data-win-bind="winControl.userRating: ratingAvg"></div>
-                            <span class="company" data-win-bind="textContent: company"></span>
-                            <a class="details" data-win-bind="_data: this" onclick="WinJS.Navigation.navigate('/pages/detail/detail.html', this._data);">View Details ></a>
+                            <div class="resultListTemplateBottom">
+                                <div>
+                                    <div data-win-control="WinJS.UI.Rating" data-win-options="{ disabled: true }" data-win-bind="winControl.userRating: ratingAvg"></div>
+                                    <div>
+                                        <span>(</span>
+                                        <span data-win-bind="textContent: ratingCount"></span>
+                                        <span>ratings)</span>
+                                    </div>
+                                </div>
+                                <span class="company" data-win-bind="textContent: company"></span>
+                                <a class="details" data-win-bind="_data: this" onclick="WinJS.Navigation.navigate('/pages/detail/detail.html', this._data);">View Details ></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+    </body>
 
-</body>
 </html>

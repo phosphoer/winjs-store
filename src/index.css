@@ -34,3 +34,9 @@ body {
     line-height: 16px;
     align-self: center;
 }
+
+.win-searchbox {
+    position: absolute;
+    top: 8px;
+    right: 300px;
+}

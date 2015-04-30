@@ -47,8 +47,7 @@ module Store {
         static queryFilterFunction = (item: ICatalogItem): boolean => {
             return item.name.toLowerCase().indexOf(Data.currentQuery.toLowerCase()) >= 0 ||
                 item.category.toLowerCase().indexOf(Data.currentQuery.toLowerCase()) >= 0 ||
-                item.company.toLowerCase().indexOf(Data.currentQuery.toLowerCase()) >= 0 ||
-                item.desc.toLowerCase().indexOf(Data.currentQuery.toLowerCase()) >= 0;
+                item.company.toLowerCase().indexOf(Data.currentQuery.toLowerCase()) >= 0;
         }
 
         static categoryFilterFunction = (item: ICatalogItem): boolean => {
@@ -152,7 +151,7 @@ module Store {
             id: i,
             name: (featured ? "Featured " : "") + category + " item " + (i + 0),
             price: +(1 + Math.random() * 200).toFixed(2),
-            ratingAvg: +(Math.random() * 5).toFixed(2),
+            ratingAvg: +(popular ? (3 + Math.random() * 2) : 1 + Math.random() * 4).toFixed(2),
             ratingCount: (popular ? (100 + Math.random() * 10000) : (Math.random() * 50)) | 0,
             reviews: reviews,
         });
