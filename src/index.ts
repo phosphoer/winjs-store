@@ -71,7 +71,13 @@ module Store {
         }
 
         static numCategoriesChecked = 0;
+        static numCompaniesChecked = 0;
+        static numPricesChecked = 0;
+        static numRatingsChecked = 0;
         static currentCategories = {};
+        static currentCompanies = {};
+        static currentPrices = {};
+        static currentRatings = {};
 
         static get sortingFunc() {
             return Data._sortingFunc;
