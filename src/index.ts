@@ -7,7 +7,7 @@ module Store {
     export var companies: WinJS.Binding.List<string>;
 
     export function showCart() {
-        var contentDialog = document.querySelector(".win-contentdialog").winControl;
+        var contentDialog = document.querySelector("#cartDialog").winControl;
         contentDialog.show().then((e) => {
             if (e.result === 'primary') {
                 alert('checkout');
@@ -18,7 +18,15 @@ module Store {
     }
 
     export function showProfile() {
-        console.log("profile");
+        var dialogElement = document.querySelector("#profileDialog");
+        var dialog = dialogElement.winControl;
+        var inputElement = (<HTMLInputElement>dialogElement.querySelector("input"));
+        inputElement.value = "";
+        dialog.show().then(e => {
+            if (e.result === "primary" && inputElement.value.trim()) {
+                document.querySelector("#appbarLabel").textContent = "Hi, " + inputElement.value.trim();
+            }
+        });
     }
 
     export function showSettings() {
