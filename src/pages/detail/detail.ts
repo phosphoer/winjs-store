@@ -16,8 +16,14 @@ function merge(a, b) {
 (() => {
   WinJS.UI.Pages.define("/pages/detail/detail.html", {
     ready: function (element, options) {
-      var index = Math.random() * Store.Data.filteredData.length | 0;
-      var item = Store.Data.filteredData.getAt(index);
+      var seletedId = options.id;
+      var data = Store.Data.filteredData;
+      var item;
+      for (var i = 0, len = data.length; i < len && !item; i++) {
+        if (data.getAt(i).id === seletedId) {
+          item = data.getAt(i);
+        }
+      }
       this._item = item;
       var specParams = [
         { label: "Name", prop: "name" },
