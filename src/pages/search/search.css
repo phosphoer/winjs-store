@@ -48,7 +48,8 @@
 .resultListTemplate {
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 16px;
+  margin: 8px;
+	margin-bottom: 32px;
 	border-bottom: 1px solid #BBBBBB;
 }
 
@@ -73,3 +74,15 @@
 	justify-content: space-between;
 }
 
+.resultListTemplate .company {
+  font-size: 12pt;
+}
+
+.resultListTemplate .details {
+  font-size: 16pt;
+}
+
+.resultListTemplate .price:before {
+  font-size: 16pt;
+  content: "starting from $";
+}
