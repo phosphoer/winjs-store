@@ -24,3 +24,7 @@
 #detailPage .details .amount input {
     width: 64px;
 }
+
+#detailPage .reviewEntry {
+    margin-bottom: 12px;
+}

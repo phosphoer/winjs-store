@@ -28,7 +28,7 @@
                 <div data-win-control="WinJS.UI.PivotItem" data-win-options="{ 'header': 'Reviews' }">
                     <p><span data-win-bind="textContent: reviews.length"></span> review(s):</p>
                     <ul data-win-control="WinJS.UI.Repeater" data-win-bind="this['winControl'].data: reviews">
-                        <li data-win-bind="textContent: this"></li>
+                        <li class="reviewEntry" data-win-bind="textContent: this"></li>
                     </ul>
                 </div>
                 <div data-win-control="WinJS.UI.PivotItem" data-win-options="{ 'header': 'Preview' }">
