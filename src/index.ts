@@ -45,14 +45,10 @@ module Store {
         }
 
         static queryFilterFunction = (item: ICatalogItem): boolean => {
-            if (Data.currentQuery) {
-                return item.name.indexOf(Data.currentQuery) >= 0 ||
-                    item.category.indexOf(Data.currentQuery) >= 0 ||
-                    item.company.indexOf(Data.currentQuery) >= 0 ||
-                    item.desc.indexOf(Data.currentQuery) >= 0;
-            }
-
-            return true;
+            return item.name.indexOf(Data.currentQuery) >= 0 ||
+                item.category.indexOf(Data.currentQuery) >= 0 ||
+                item.company.indexOf(Data.currentQuery) >= 0 ||
+                item.desc.indexOf(Data.currentQuery) >= 0;
         }
 
         static categoryFilterFunction = (item: ICatalogItem): boolean => {
@@ -67,7 +63,8 @@ module Store {
             return Data._currentQuery;
         }
         static set currentQuery(value: string) {
-            if (value && value !== Data._currentQuery) {
+            value = value || "";
+            if (value !== Data._currentQuery) {
                 Data._currentQuery = value;
                 Data.refreshData();
             }
@@ -85,7 +82,8 @@ module Store {
         }
 
         static refreshData() {
-            var tempCatalog: ICatalogItem[] = catalog.filter(Data.filterFunction);
+            var tempCatalog:ICatalogItem[] = catalog.filter(Data.filterFunction);
+            tempCatalog.splice(100, tempCatalog.length);
 
             Data.filteredData.length = 0;
             Data.filteredData.splice.apply(Data.filteredData, (<any>[0, 0]).concat(tempCatalog.sort(Data.sortingFunc)));

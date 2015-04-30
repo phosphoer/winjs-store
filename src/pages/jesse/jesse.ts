@@ -14,24 +14,30 @@
             //Store.Data.refreshData();
 
 
-            //function suggestionsRequestedHandler(eventObject) {
-            //    var queryText = eventObject.detail.queryText,
-            //        query = queryText.toLowerCase(),
-            //        suggestionCollection = eventObject.detail.searchSuggestionCollection;
-            //    if (queryText.length > 0) {
-            //        for (var i = 0, len = suggestionList.length; i < len; i++) {
-            //            if (suggestionList[i].substr(0, query.length).toLowerCase() === query) {
-            //                suggestionCollection.appendQuerySuggestion(suggestionList[i]);
-            //            }
-            //        }
-            //    }
-            //}
+            function suggestionsRequestedHandler(eventObject) {
+                var queryText = eventObject.detail.queryText,
+                    query = queryText.toLowerCase(),
+                    suggestionCollection = eventObject.detail.searchSuggestionCollection;
+                if (queryText.length > 0) {
+
+                    var catalog = Store.catalog;
+                    var len = catalog.length;
+
+                    var matchesFound = 0;
+                    for (var i = 0; i < len && matchesFound < 6; i++) {
+                        if (catalog[i].name.indexOf(queryText) >= 0) {
+                            suggestionCollection.appendQuerySuggestion(catalog[i].name);
+                            matchesFound++;
+                        }
+                    }
+                }
+            }
 
             function querySubmittedHandler(eventObject) {
                 var queryText = eventObject.detail.queryText;
                 WinJS.log && WinJS.log(queryText, "sample", "status");
-                window["Store"].Data.currentQuery = queryText;
-                window["Store"].Data.refreshData();
+                Store.Data.currentQuery = queryText;
+                Store.Data.refreshData();
             }
 
             var statusEl = <HTMLElement>(document.querySelector("#status"));
@@ -43,7 +49,7 @@
             }
 
             var searchBox = document.querySelector("#searchbox");
-            //searchBox.addEventListener("suggestionsrequested", suggestionsRequestedHandler);
+            searchBox.addEventListener("suggestionsrequested", suggestionsRequestedHandler);
             searchBox.addEventListener("querysubmitted", querySubmittedHandler);
 
         },
