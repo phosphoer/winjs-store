@@ -82,11 +82,11 @@ module Store {
         }
 
         static refreshData() {
-            var tempCatalog:ICatalogItem[] = catalog.filter(Data.filterFunction);
-            tempCatalog.splice(100, tempCatalog.length);
+            var tempCatalog: ICatalogItem[] = catalog.filter(Data.filterFunction);
+            tempCatalog = tempCatalog.sort(Data.sortingFunc).slice(0, 100);
 
             Data.filteredData.length = 0;
-            Data.filteredData.splice.apply(Data.filteredData, (<any>[0, 0]).concat(tempCatalog.sort(Data.sortingFunc)));
+            Data.filteredData.splice.apply(Data.filteredData, (<any>[0, 0]).concat(tempCatalog));
         }
     }
 
