@@ -17,6 +17,35 @@
               var item = window['Store'].categories.getAt(i);
               window['Store'].Data.currentCategories[item] = false;
             }
+
+            function suggestionsRequestedHandler(eventObject) {
+                var queryText = eventObject.detail.queryText,
+                    query = queryText.toLowerCase(),
+                    suggestionCollection = eventObject.detail.searchSuggestionCollection;
+                if (queryText.length > 0) {
+
+                    var catalog = Store.catalog;
+                    var len = catalog.length;
+
+                    var matchesFound = 0;
+                    for (var i = 0; i < len && matchesFound < 6; i++) {
+                        if (catalog[i].name.toLowerCase().indexOf(query) >= 0) {
+                            suggestionCollection.appendQuerySuggestion(catalog[i].name);
+                            matchesFound++;
+                        }
+                    }
+                }
+            }
+
+            function querySubmittedHandler(eventObject) {
+                var queryText = eventObject.detail.queryText;
+                Store.Data.currentQuery = queryText;
+                Store.Data.refreshData();
+            }
+
+            var searchBox = document.querySelector("#searchbox");
+            searchBox.addEventListener("suggestionsrequested", suggestionsRequestedHandler);
+            searchBox.addEventListener("querysubmitted", querySubmittedHandler);
         },
         unload: function () {
         },

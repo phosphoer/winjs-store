@@ -45,3 +45,31 @@
   display: none;
 }
 
+.resultListTemplate {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 16px;
+	border-bottom: 1px solid #BBBBBB;
+}
+
+.resultListTemplate .resultListTemplateTop {
+	display: flex;
+	justify-content: space-between;
+}
+
+.resultListTemplate .resultListTemplateTop .placeholderImg {
+	width: 160px;
+	height: 160px;
+	background-color: gray;
+	display: inline-block;
+}
+
+.resultListTemplate .resultListTemplateTop .name {
+	vertical-align: top;
+}
+
+.resultListTemplate .resultListTemplateBottom {
+	display: flex;
+	justify-content: space-between;
+}
+
