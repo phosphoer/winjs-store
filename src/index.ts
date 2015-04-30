@@ -74,12 +74,8 @@ module Store {
         }
 
         static refreshData() {
-<<<<<<< HEAD
-            var tempCatalog: ICatalogItem[] = catalog.filter(Data.filterFunction);
-=======
             var tempCatalog:ICatalogItem[] = catalog.filter(Data.filterFunction);
             tempCatalog.splice(100, tempCatalog.length);
->>>>>>> 43625c945d30ec18b9db7c169f7cfaa2b77e3ee9
 
             Data.filteredData.length = 0;
             Data.filteredData.splice.apply(Data.filteredData, (<any>[0, 0]).concat(tempCatalog.sort(Data.sortingFunc)));
