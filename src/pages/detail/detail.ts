@@ -14,7 +14,7 @@ function merge(a, b) {
 }
 
 (() => {
-  WinJS.UI.Pages.define("/pages/detail/detail.html", {
+  WinJS.UI.Pages.define("./pages/detail/detail.html", {
     ready: function (element, options) {
       var seletedId = options.id;
       var data = Store.Data.filteredData;

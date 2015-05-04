@@ -2,7 +2,7 @@
 ///<reference path="../../../typings/winjs-store.d.ts" />
 
 (() => {
-    WinJS.UI.Pages.define("/pages/search/search.html", {
+    WinJS.UI.Pages.define("./pages/search/search.html", {
         _commands: <HTMLButtonElement[]>[],
         
         ready: function(element, options) {
