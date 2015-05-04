@@ -1,0 +1,44 @@
+body {
+    font-size: 16pt;
+    background-color: rgb(238, 238, 238);
+}
+
+#root {
+    /* Make room for the AppBar */
+    padding-top: 48px;
+    height: calc(100% - 48px - 70px);
+}
+
+#root #currentPage {
+    height: 100%;
+    position: relative;
+}
+
+#appBar .win-commandingsurface-actionarea {
+    background-color: rgb(68, 34, 87);
+}
+
+.logoArea {
+    position: relative;
+    background-color: rgb(68, 34, 87);
+    height: 70px;
+}
+
+.logoArea > * {
+    position: absolute;
+}
+
+#appbarLabel {
+    text-align: left;
+    font-size: 16px;
+    line-height: 16px;
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center;
+}
+
+.win-searchbox {
+    position: absolute;
+    top: 64px;
+    right: 12px;
+}

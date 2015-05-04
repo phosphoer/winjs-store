@@ -1,0 +1,142 @@
+.pane-section
+{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 8px;
+}
+
+.pane-title
+{
+  margin-bottom: 5px;
+  font-size: 18px;
+  display: inline-block;
+}
+
+.pane-title-icon
+{
+  display: inline-block;
+  font-size: 30px;
+  line-height: 30px;
+  font-family: "Symbols";
+}
+
+.pane-item-checkbox
+{
+  display: inline-block;
+}
+
+.pane-item-name
+{
+  display: inline-block;
+}
+
+.win-splitview-pane {
+  background-color: rgb(52, 18, 69);
+  color: rgb(220, 220, 220);
+}
+
+.win-splitview-pane-closed .pane-section
+{
+  margin-bottom: 50px;
+}
+
+.win-splitview-pane-closed .pane-title
+{
+  display: none;
+}
+
+.win-splitview-pane-closed .pane-item-group
+{
+  display: none;
+}
+
+.resultListTemplate {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+  margin: 8px;
+  padding: 8px;
+	margin-bottom: 16px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.resultListTemplate .resultListTemplateTop {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+
+.resultListTemplate .resultListTemplateTop .placeholderImg {
+	width: 160px;
+	height: 160px;
+	background-color: gray;
+	display: inline-block;
+}
+
+.resultListTemplate .resultListTemplateTop .name {
+	vertical-align: top;
+}
+
+.resultListTemplate .resultListTemplateBottom {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+
+.resultListTemplate .company {
+  font-size: 12pt;
+}
+
+.resultListTemplate .details {
+  font-size: 12pt;
+}
+
+.resultListTemplate .price:before {
+  font-size: 12pt;
+  content: "starting from $";
+}
+
+.scroller {
+    overflow:scroll;
+    -webkit-box-flex: 1;
+    -webkit-flex: auto;
+        -ms-flex: auto;
+            flex: auto;
+}
+
+.win-toolbar {
+    -webkit-box-flex: 0;
+    -webkit-flex: none;
+        -ms-flex: none;
+            flex: none;
+}
+
+.pane-contents {
+    height: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+}
+
